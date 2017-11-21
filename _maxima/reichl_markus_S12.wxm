@@ -1,0 +1,187 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 17.10.1 ] */
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+load(distrib);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+Bsp.: 8.124
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: input   start ] */
+N: 500;
+D: 250;
+n: 20;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+p: D / N;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Genau 10
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+x_a: 10;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsubsect start ]
+Hypergeometrisch
+   [wxMaxima: subsubsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+P_a_hg_10: pdf_hypergeometric(x_a, N, N-D, n), numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsubsect start ]
+Binomial
+   [wxMaxima: subsubsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+P_a_bn_10: pdf_binomial(x_a, n, p), numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsubsect start ]
+Fehler
+   [wxMaxima: subsubsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+P_a_lat_10: abs(P_a_hg_10 - P_a_bn_10);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Mehr als 1
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+x_b: [0, 1];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsubsect start ]
+Hypergeometrisch
+   [wxMaxima: subsubsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+P_b_hg_greater1: 1 - sum(pdf_hypergeometric(x_b[i], N, N-D, n),i ,1 , length(x_b)), numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsubsect start ]
+Binomial
+   [wxMaxima: subsubsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+P_b_bn_greater1: 1 - sum(pdf_binomial(x_b[i], n, p),i ,1 , length(x_b)), numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsubsect start ]
+Fehler
+   [wxMaxima: subsubsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+P_b_lat_greater1: abs(P_b_hg_greater1 - P_b_bn_greater1);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+Bsp.: 8.108
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: input   start ] */
+n: 25;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+D: 1/8 * n;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+p: D / n;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Warum ist Binomial möglich?
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+x_a: 3;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+pdf_binomial(x_a, n, p), numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+- Konstante Wahrscheinlichkeit
+- Ziehen mit Zurücklegen
+- LAPLACE Experiment
+    - unendlich oft wiederholbar
+    - endlich viele Ergebnisse
+- n < N / 10
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: subsect start ]
+4 markiert
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+x_b: [0, 1, 2, 3, 4];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+sum(pdf_binomial(x_b[i], n, p),i ,1 , length(x_b)), numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Zusammenhang
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+1 - (pdf_binomial(xx0, nn, pp) + pdf_binomial(xx1, nn, pp));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Es sind mehr als 2 markiert. Die Form der Gleichung entspricht einer Binomialfunktion.
+   [wxMaxima: comment end   ] */
+
+
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

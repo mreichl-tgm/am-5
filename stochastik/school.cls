@@ -1,50 +1,42 @@
 \ProvidesClass{school}
 \LoadClass[a4paper,10pt]{article}
-%% Packages
-% Page format
+% == Packages
+% === Page format
 \RequirePackage{a4wide}
 \RequirePackage{booktabs}
 \RequirePackage[marginal, norule, perpage]{footmisc}
-% Language
+% === Language
 \RequirePackage[ngerman]{babel}
-% Encoding
+% === Font
 \RequirePackage[utf8]{inputenc}
 \RequirePackage{microtype}
 \RequirePackage[T1]{fontenc}
-% Font
-\RequirePackage[default,light,semibold]{sourceserifpro}
-% Math
+\RequirePackage{mathptmx}
+% === Math
 \RequirePackage{amssymb}
 \RequirePackage{mathtools}
-% Color
+% === Color
 \RequirePackage[dvipsnames]{xcolor}
-% Graphics
+% === Graphics
 \RequirePackage{graphicx}
 \RequirePackage{caption}
 \RequirePackage{subcaption}
-% Hyperlinks
+% === Hyperlinks
 \RequirePackage{hyperref}
 \RequirePackage{url}
-% Enumeration
+% === Enumeration
 \RequirePackage{outlines}
 \RequirePackage{enumitem}
-% Tables
+% === Tables
 \RequirePackage{tabularx}
-% Glossaries
+% === Glossaries
 \RequirePackage[acronym, xindy, toc]{glossaries}
 
 %% Package Configuration
-\hypersetup{
-colorlinks=true,
-linkcolor=MidnightBlue,
-urlcolor=MidnightBlue,
-citecolor=MidnightBlue
-}
+\hypersetup{colorlinks=true, linkcolor=MidnightBlue, urlcolor=MidnightBlue, citecolor=MidnightBlue}
 % Variables
 \newcommand\@subject{}
 \newcommand\subject[1]{\renewcommand\@subject{#1}}
-\newcommand\@subtitle{}
-\newcommand\subtitle[1]{\renewcommand\@subtitle{#1}}
 % Settings
 \def\arraystretch{1.5}
 \renewcommand{\thefootnote}{\Roman{footnote}}
@@ -61,8 +53,7 @@ citecolor=MidnightBlue
         \rule{0.5\textwidth}{0.1 mm}
     \end{center}
     \vspace{1 em}
-    \huge{\makeatletter\@title\makeatother} \vspace{0.5 em} \\
-    \large{\makeatletter\@subtitle\makeatother} \vspace{1.5 em}
+    \huge{\makeatletter\@title\makeatother} \vspace{0.5 em}
     \par
     \vskip 1.5em
     {\large
@@ -76,5 +67,3 @@ citecolor=MidnightBlue
   \par
   \vskip 1.5em}
 \makeatother
-
-\makeglossaries
