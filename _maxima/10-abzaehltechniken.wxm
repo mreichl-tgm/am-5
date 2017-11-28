@@ -1,0 +1,300 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 17.10.1 ] */
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: title   start ]
+AM - H10 - Abzaehltechniken
+   [wxMaxima: title   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Markus Reichl, 5AHITM, 11.11.2017
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: section start ]
+Permutation
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: comment start ]
+Es seien n=5 Personen (A B C D E) gegeben und die Anzahl der Reihenfolgen wird gesucht.
+z.B.:   A B C D E; E D C B A; ...
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: comment start ]
+Jede Person koennte an jeder Stelle stehen, jedoch steht fuer jede weitere Stelle eine Person weniger zu Verfuegung.
+    Position:     1, 2, 3, 4, 5
+    Personen:   5, 4, 3, 2, 1
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: comment start ]
+Es koennen also 5 UND 4 UND 3 UND 2 UND 1 Reihenfolgen gebildet werden. Diese Wahrscheinlichkeit kann einfach durch einen Faktor bestimmt werden.
+    >>  5 * 4 * 3 * 2 * 1 = 5!
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: comment start ]
+Die Anzahl der Permutationen von n Elementen entspricht n!
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: section start ]
+Kombination
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: comment start ]
+Von n=7 Personen (A B C D E F G) sollen k=3 ausgewaehlt werden. Die Reihenfolge ist dabei belanglos.
+z.B.:   A B C; C B A; A F C; ...
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: comment start ]
+Fuer jede Auswahl steht eine Person weniger zur Verfuegung, jedoch koennen diese auch in unterschiedlicher Reihenfolge stehen. Da die Reihenfolge belanglos ist muss die Wahrscheinlichkeit relativ zur Anzahl der gewaehlten Personen genommen werden.
+Gesucht sind also die Permutationen zwischen n und k, dividiert durch die Permutationen von n - k.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+n! / ((n-k)! * k!);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Diese Formel wird "Binomialkoeffizient" genannt oder auch als "n ueber k" Formel bezeichnet.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+binomial(n, k);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+Variation
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: comment start ]
+Aus n=7 Personen (A B C D E F G) werden k=3 Personen (X Y Z) ausgewaehlt. Die Reihenfolge der Kombination ist dabei zu beachten.
+z.B.:   X: A, Y: B, Z: C; X: E, Y: F; Z: G; ...
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: comment start ]
+Fuer jede Stelle steht eine Person weniger zur Verfuegung, da eine Person zudem nur je eine Stelle besetzen darf, duerfen zudem keine Wiederholungen vorkommen.
+Gesucht sind also die Permutationen zwischen n, dividiert durch die Permutationen von n - k.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+n! / (n-k)!;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Mithilfe eines Binomialkoeffizienten:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+binomial(n, k) * k!;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+Beispiele
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Schalter
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: comment start ]
+In einem Gerät werden 5 Schalter (A B C D E) stets gleichartig beansprucht. Die Ausfallswahrscheinlichkeit (R), waehrend der Nutzungsdauer, liegt bei einem Schalter unabhaengig von den anderen bei 4%. Wie wahrscheinlich fallen
+    a) keine
+    b) genau ein
+    c) höchstens drei
+    d) mindestens drei 
+Schalter? 
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+R: 0.04;
+n: 5;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsubsect start ]
+Kein
+   [wxMaxima: subsubsect end   ] */
+
+
+/* [wxMaxima: comment start ]
+NON (A OR B OR C OR D OR E)
+>> 1 - (A + B + C + D + E)
+>> 1 - 5 * R
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+1 - (n * R);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Zu 80% faellt kein Schalter
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: subsubsect start ]
+Ein
+   [wxMaxima: subsubsect end   ] */
+
+
+/* [wxMaxima: comment start ]
+A OR B OR C OR D OR E - A AND B AND C AND D AND E
+>> A + B + C + D + E - A * B * C * D * E
+>> 5 * R - R^5
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+n * R - R^n;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Zu etwa 20% faellt genau ein Schalter
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: subsubsect start ]
+< 4
+   [wxMaxima: subsubsect end   ] */
+
+
+/* [wxMaxima: comment start ]
+ENTWEDER kein Schalter ODER 1 Schalter ODER 2 Schalter ODER 3 Schalter
+    >>  Unvereinbar
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+1 - (n * R) + sum(
+    binomial(5, i) * R^i - R^i^n,
+i, 1, 3) - ((1 - (n * R)) * product(
+    binomial(5, i) * R^i - R^i^n,
+i, 1, 3));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Zu etwa 97.6% fallen maximal 3 Schalter
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: subsubsect start ]
+> 2
+   [wxMaxima: subsubsect end   ] */
+
+
+/* [wxMaxima: comment start ]
+ENTWEDER alle Schalter ODER 4 Schalter ODER 3 Schalter
+    >>  Unvereinbar
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+R^n + binomial(n, 4) * R^4 - R^4^n + binomial(n, 4) * R^3 - R^3^n -
+R^n * (binomial(n, 4) * R^4 - R^4^n) * (binomial(n, 4) * R^3 - R^3^n);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Zu etwa 0.003329% fallen mindestens 3 Schalter
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Elektronik (fehlt)
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: comment start ]
+Eine Lieferung von 20 Elektrogeraeten enthält 3 fehlerhafte Geraete. Man entnimmt dieser Lieferung
+eine Stichprobe vom Umfang 5.
+    a) Auf wie viele Arten kann eine solche Stichprobe entnommen werden?
+    b) Wie viele dieser Arten enthalten genau ein fehlerhaftes Geraet? 
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Schulklasse (falsch)
+   [wxMaxima: subsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: comment start ]
+Wie groß ist die Wahrscheinlichkeit, dass in einer Schulklasse mit 10 Burschen und 5 Maedchen bei
+einer Zufallsauswahl von 3 Schuelern
+    a) kein Maedchen
+    b) mindestens ein Maedchen darunter ist? 
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+(10 / 15)^3, numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Die Chance, dass kein Maedchen dabei ist liegt bei etwa 29.6%
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+(5 / 10)^3 + (5/10)^2 + (5/10), numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Die Chance, dass ein Maedchen dabei ist liegt bei etwa 87.5%
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: fold    end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Batterietest (falsch)
+   [wxMaxima: subsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: comment start ]
+Ein Batterietestgeraet kann gleichzeitig 4 Batterien pruefen. Unter 20 Batterien sind 2 unbrauchbar.
+Wie groß ist die Wahrscheinlichkeit, dass diese gleich beim ersten Test entdeckt werden?
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+(A) (B) C   D
+(2/20)^2 * (18/20)^2
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+(2/20)^2 * (18/20)^2, numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Die Chance betraegt etwa 0.81 Prozent
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: fold    end   ] */
+
+
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

@@ -1,0 +1,565 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 17.10.1 ] */
+/* [wxMaxima: input   start ] */
+kill(all);
+load(distrib);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+H12 - Markus Reichl, 5AHITM, 2017-11-22
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: section start ]
+Zusammenfassung S12
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Bsp.: 8.124
+   [wxMaxima: subsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: input   start ] */
+N: 500;
+D: 250;
+n: 20;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+p: D / N;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsubsect start ]
+Genau 10 neu
+   [wxMaxima: subsubsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: input   start ] */
+x_a: 10;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Hypergeometrisch
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+P_a_hg_10: pdf_hypergeometric(x_a, N, N-D, n), numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Binomial
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+P_a_bn_10: pdf_binomial(x_a, n, p), numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Fehler: Differenz zwischen hypergeometrischer und binomialer Berechnung
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+P_a_lat_10: abs(P_a_hg_10 - P_a_bn_10);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: fold    end   ] */
+
+
+/* [wxMaxima: fold    end   ] */
+
+
+/* [wxMaxima: subsubsect start ]
+Mehr als 1 neu
+   [wxMaxima: subsubsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: input   start ] */
+x_b: [0, 1];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Hypergeometrisch
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+P_b_hg_greater1: 1 - sum(pdf_hypergeometric(x_b[i], N, N-D, n),i ,1 , length(x_b)), numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Binomial
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+P_b_bn_greater1: 1 - sum(pdf_binomial(x_b[i], n, p),i ,1 , length(x_b)), numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Fehler: Differenz zwischen hypergeometrischer und binomialer Berechnung
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+P_b_lat_greater1: abs(P_b_hg_greater1 - P_b_bn_greater1);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: fold    end   ] */
+
+
+/* [wxMaxima: subsubsect start ]
+Weniger als 6 alt
+   [wxMaxima: subsubsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: input   start ] */
+n-5;
+x_c: [n, n-1, n-2, n-3, n-4, n-5];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Hypergeometrisch
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+P_c_hg_greater14: 1 - sum(pdf_hypergeometric(x_c[i], N, N-D, n),i ,1 , length(x_c)), numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Binomial
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+P_c_bn_greater14: 1 - sum(pdf_binomial(x_c[i], n, p),i ,1 , length(x_c)), numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Fehler: Differenz zwischen hypergeometrischer und binomialer Berechnung
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+P_c_lat_greater14: abs(P_c_hg_greater14 - P_c_bn_greater14);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: fold    end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Bsp.: 8.108
+   [wxMaxima: subsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: input   start ] */
+kill(all);
+load(distrib);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+n: 25;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+D: 1/8 * n;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+p: D / n;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsubsect start ]
+3 markiert
+   [wxMaxima: subsubsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: input   start ] */
+x_a: 3;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+pdf_binomial(x_a, n, p), numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Warum ist Binomial möglich?
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+* Konstante Wahrscheinlichkeit
+* Ziehen mit Zurücklegen
+* Es handelt sich um ein Laplace Experiment
+    * unendlich oft wiederholbar
+    * endlich viele Ergebnisse
+* n < N / 10
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: fold    end   ] */
+
+
+/* [wxMaxima: fold    end   ] */
+
+
+/* [wxMaxima: subsubsect start ]
+< 4 markiert
+   [wxMaxima: subsubsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: input   start ] */
+x_b: [0, 1, 2, 3, 4];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+sum(pdf_binomial(x_b[i], n, p),i ,1 , length(x_b)), numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: fold    end   ] */
+
+
+/* [wxMaxima: subsubsect start ]
+Zusammenhang
+   [wxMaxima: subsubsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: input   start ] */
+1 - (pdf_binomial(xx0, nn, pp) + pdf_binomial(xx1, nn, pp));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Es sind mehr als 2 markiert. Die Form der Gleichung entspricht einer Binomialfunktion.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: fold    end   ] */
+
+
+/* [wxMaxima: subsubsect start ]
+Wahrscheinlichkeit einer Markierungen = 50%
+   [wxMaxima: subsubsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: input   start ] */
+P: 0.5;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+P - 1 = pdf_binomial(0, n_4, p), numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(log(1-P) = log(0.875^n_4), n_4)[1], numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Es müssten 6 gewählt werden um zu 50% ein markiertes zu erhalten.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: fold    end   ] */
+
+
+/* [wxMaxima: section start ]
+H12
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Bsp.: 8.109
+   [wxMaxima: subsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: input   start ] */
+kill(all);
+load(distrib);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+n: 10;
+p: 0.13;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+10kg Gummibären, davon 13% grün.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: subsubsect start ]
+Warum ist Binomial möglich?
+   [wxMaxima: subsubsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: comment start ]
+* Packung ist scheinbar unendlich groß
+    -> Konstante Wahrscheinlichkeit
+    -> Ziehen mit Zurücklegen
+    -> Es handelt sich um ein Laplace Experiment
+        -> unendlich oft wiederholbar
+        -> endlich viele Ergebnisse
+* n < N / 10
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: fold    end   ] */
+
+/* [wxMaxima: subsubsect start ]
+Wahrscheinlichkeiten
+   [wxMaxima: subsubsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: comment start ]
+3 / 10 grün (x = 3)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+x_2a: 3;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+pdf_binomial(x_2a,n,p);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+=> Etwa 9,95%
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+> 1 / 10 grün (!x = 0)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+x_2b: 0;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+1- pdf_binomial(x_2b,n,p);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+=> Etwa 75,16%
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+< 4 / 10 grün (x = 0 1 2 3)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+x_2c: [0, 1, 2, 3];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+sum(pdf_binomial(x_2c[i], n, p),i ,1 , length(x_2c));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+=> Etwa 96,87%
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: fold    end   ] */
+
+/* [wxMaxima: subsubsect start ]
+Wie viele nehmen für 95% grün?
+   [wxMaxima: subsubsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: input   start ] */
+P: 0.95;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+P = pdf_binomial(0, n_2, p);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(log(1 - P) = log(0.87^n_2), n_2)[1], numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Sie müsste 22 aus der Packung nehmen
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: fold    end   ] */
+
+/* [wxMaxima: subsubsect start ]
+Wie viele grüne sind bei 20 Bären zu erwarten?
+   [wxMaxima: subsubsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: input   start ] */
+n: 20;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+p * n, numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+2 - 3 sind zur erwarten, tendenz Richtung 3
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: fold    end   ] */
+
+/* [wxMaxima: subsubsect start ]
+Anteil grün wenn 90%ig aus 1/10
+   [wxMaxima: subsubsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: input   start ] */
+n_5: 10;
+P_5: 0.90;
+x_5: 1;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+P_5 = pdf_binomial(x_5,n_5,p_5);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: fold    end   ] */
+
+
+/* [wxMaxima: fold    end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Bsp.: 8.113
+   [wxMaxima: subsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: input   start ] */
+kill(all);
+load(distrib);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+n: 600;
+x: 555;
+p: 0.9;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+pdf_binomial(x,n,p);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Es kommt zu 0.64 Prozent zu einer Überbuchung.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: fold    end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Bsp.: 8.115
+   [wxMaxima: subsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: input   start ] */
+kill(all);
+load(distrib);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+N: 276000;
+D: 49400;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsubsect start ]
+Von 10
+   [wxMaxima: subsubsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: input   start ] */
+n: 10;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+1)  2 verheiratet
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+x_a1: 2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+pdf_hypergeometric(x_a1,N,N-D,n), numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+2) > 2 verheiratet
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+x_a2: [0, 1, 2];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+1 - sum(pdf_hypergeometric(x_a2[i], N,N-D, n),i ,1 , length(x_a2)), numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+3) < 3
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+x_a3: [0, 1, 2];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+sum(pdf_hypergeometric(x_a3[i], N,N-D, n),i ,1 , length(x_a3)), numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+4) < n / 2
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+x_a4: makelist(i, i,0,n / 2 - 1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+sum(pdf_hypergeometric(x_a3[i], N,N-D, n),i ,1 , length(x_a3)), numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+5) Die ersten 6 nicht verheiratet (Reihenfolge ist relevant)
+1 und 2 und 3 und 4 und 5 und 6 nicht verheiratet
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+6) Spätestens der 5. verheiratet
+1 oder 2 oder 3 oder 4 oder 5 sind verheiratet
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: fold    end   ] */
+
+/* [wxMaxima: subsubsect start ]
+Anteil für 99%ig mindestens 2/10
+   [wxMaxima: subsubsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: input   start ] */
+x_b: [0, 1];
+n_b: 10;
+P_b: 0.99;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+linsolve(1 - P_b = sum(pdf_hypergeometric(x_b[i], N,N-D_b, n_b),i ,1 , length(x_b)), D_b), numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+4296 von 276000 müssten verheiratet sein, sodass zu 99% mehr als 2 von 10 verheiratet sind.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: fold    end   ] */
+
+/* [wxMaxima: subsubsect start ]
+Auswahl für 99%ig mindestens 3/10
+   [wxMaxima: subsubsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: input   start ] */
+x_c: [0, 1, 2];
+P_c: 0.99;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(1 - P_c = sum(pdf_hypergeometric(x_c[i], N,N-D, n_c),i ,1 , length(x_c)), n_c), numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: fold    end   ] */
+
+
+/* [wxMaxima: fold    end   ] */
+
+
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

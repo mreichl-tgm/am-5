@@ -1,0 +1,77 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 17.10.1 ] */
+/* [wxMaxima: input   start ] */
+load(distrib);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+dichtefunktionNV: 1 / (σ*sqrt(2*%pi)) * e^(-(x-μ)^2/(2*σ^2));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+dichtefunktionNV_6_1: subst(1, σ, subst(6, μ, dichtefunktionNV));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxplot2d([pdf_normal(x, 6, 1), pdf_normal(x, 4, 1), pdf_normal(x, 6, 2)],[x, 0, 12]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+normal0m6s1: pdf_normal(x, 6, 1);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Wert höchstens 3
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: hide output   ] */
+/* [wxMaxima: input   start ] */
+integrate(normal0m6s1,x, 0, 3), numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Wert zwischen 3 und 7
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: hide output   ] */
+/* [wxMaxima: input   start ] */
+integrate(pdf_normal(x, 6, 1),x, 3, 7), numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+romberg(normal0m6s1,3,7);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+cdf_normal(7, 6, 1) - cdf_normal(3,6,1), numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Verteilungsfunktion der NV
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxplot2d([cdf_normal(x, 6, 1), cdf_normal(x, 4, 1), cdf_normal(x, 6, 2)], [x, 0, 12]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxplot2d([cdf_normal(x, 6, 1), pdf_normal(x, 6, 1)], [x, 2, 10]);
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

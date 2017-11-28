@@ -1,0 +1,383 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 17.10.1 ] */
+/* [wxMaxima: title   start ]
+Stochastik
+   [wxMaxima: title   end   ] */
+
+
+/* [wxMaxima: section start ]
+Einführung
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: comment start ]
+Der Zufall unterliegt Regeln, welche erst bei einer großen Anzahl an Versuchen erkennbar werden.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: comment start ]
+Bei einem Zufallsexperiment in n Versuchen, tritt das Ereignis A in k Fällen ein.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: comment start ]
+Bei ausreichend vielen Versuchen ist die Wahrscheinlichkeit P auf das Ereignis A als die Anzahl der Auftritte k durch die Anzahl der Versuche n definiert.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+P(A) = k / n;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+0 <= P(A) <= 1
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: section start ]
+Laplace Experiment
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: comment start ]
+Zufallsexperiment mit folgenden Eigenschaften:
+    - Es gibt endliche viele Ergebnisse
+    - Jedes Ergebnis ist gleich wahrscheinlich
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: comment start ]
+Man unterscheidet zwischen
+    - günstigen Fällen g und
+    - möglichen Fällen m
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+P(A) = g / m;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Bsp.: 2 ideale Würfel
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: subsubsect start ]
+Wenigstens 1 x "6"
+   [wxMaxima: subsubsect end   ] */
+
+
+/* [wxMaxima: comment start ]
+Ein Würfel hat 6 mögliche Seiten, kommt ein zweiter hinzu sind Kombinationen aller Seiten möglich:
+    =>  m = 36
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: comment start ]
+In diesen möglichen Kombinationen finden sich genau 11 in denen eine 6 vorkommt:
+    =>  g = 11
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+P(A) = g / m;
+P(A) = 11 / 36;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+In Prozent:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+P(A) = 100 * 11 / 36, numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsubsect start ]
+Genau 8 Augen
+   [wxMaxima: subsubsect end   ] */
+
+
+/* [wxMaxima: comment start ]
+Die anzahl der möglichen Seiten bleibt gleich, Kombinationen für genau 8 Augen finden sich jedoch nur 5:
+    => m = 36   g = 5
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+P(A) = g / m;
+P(A) = 5 / 36;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+In Prozent:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+P(A) = 100 * 5 / 36, numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+Zusammengesetzte Ereignisse
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: comment start ]
+2 Ereignisse A und B können entweder
+    - zugleich
+        A UND B oder
+    - mindestens 1 mal (oder zugleich)
+        A ODER B auftreten
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Bsp.: 2 ideale Würfel
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: subsubsect start ]
+(A & B) 1x "6" und genau 8 Augen
+   [wxMaxima: subsubsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+P(AaB) = 2 / 36;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsubsect start ]
+(A ? B) 1x "6" oder genau 8 Augen
+   [wxMaxima: subsubsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+P(AoB) = 14 / 36;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Unvereinbarkeit
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: comment start ]
+2 Ereignisse heißen unvereinbar, wenn sie nicht gemeinsam auftreten können:
+    => P(A & B) = 0
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Additionstheorem (ODER-Regel)
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: comment start ]
+P(A ? B) = P(A) + P(B) - P(A & B)   wenn A, B beliebig
+P(A ? B) = P(A) + P(B)                  wenn A, B unvereinbar
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: section start ]
+Bedingte Wahrscheinlichkeit
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Bsp.: 2 ideale Würfel
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: subsubsect start ]
+(A) Augensumme 8 unter der Bedingung, dass mindestens 1 x "6" vorkommt
+   [wxMaxima: subsubsect end   ] */
+
+
+/* [wxMaxima: comment start ]
+11 Möglichkeiten, dass 6 auftaucht (m = 6)
+2 Möglichkeiten, dass die Augensumme 8 ist (g = 2)
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+P(BuA) = 2 / 11;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+P(B | A): Bedingte Wahrscheinlichkeit von B unter der Bedingung, dass A eingetreten ist.
+    => P(B | A) = P(A | B) / P(A);
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: comment start ]
+Wenn der Eintritt von B durch A nicht beeinflusst wird sind A und B unabhängig.
+    => P(B | A) = P(B)
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Multiplikationssatz (UND-Regel)
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: comment start ]
+P(A & B) = P(A) * P(B | A)      wenn A, B beliebig
+P(A & B) = P(A) * P(B)           wenn A, B unabhängig
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: section start ]
+Aufgaben
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: subsect start ]
+3 ideale Münzen
+   [wxMaxima: subsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: comment start ]
+Die Anzahl der möglichen Seite entspricht dem Produkt der Möglichkeiten pro Münze:
+    => m = 2 * 2 * 2 = 8
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: subsubsect start ]
+Kein Mal Zahl
+   [wxMaxima: subsubsect end   ] */
+
+/* [wxMaxima: comment start ]
+Es existiert nur ein Wurf, bei dem alle 3 Münzen Kopf zeigen (g1 = 1)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+P(A) = 1 / 8; P(A) = 1 / 8, numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsubsect start ]
+Genau ein Mal Zahl
+   [wxMaxima: subsubsect end   ] */
+
+/* [wxMaxima: comment start ]
+Jede Münze könnte alleine auf Zahl liegen (g2 = 3)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+P(A) = 3 / 8; P(A) = 3 / 8, numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsubsect start ]
+Höchstens ein Mal Zahl
+   [wxMaxima: subsubsect end   ] */
+
+/* [wxMaxima: comment start ]
+Keine Zahl oder jeweils eine Zahl (g3 = g1 + g2)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+P(A) = 4 / 8; P(A) = 4 / 8, numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsubsect start ]
+Mindestens ein Mal Zahl
+   [wxMaxima: subsubsect end   ] */
+
+/* [wxMaxima: comment start ]
+Alle außer keine Zahl (g4 = m - g1)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+P(A) = 7 / 8; P(A) = 7 / 8, numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsubsect start ]
+Genau 2 mal Zahl
+   [wxMaxima: subsubsect end   ] */
+
+/* [wxMaxima: comment start ]
+Einmal pro Münze möglich (g5 = 3)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+P(A) = 3 / 8; P(A) = 3 / 8, numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsubsect start ]
+Höchstens 2 mal Zahl
+   [wxMaxima: subsubsect end   ] */
+
+/* [wxMaxima: comment start ]
+Keine, eine oder 2 Zahl (g6 = g1 + g2 + g5)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+P(A) = 7 / 8; P(A) = 7 / 8, numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsubsect start ]
+Mindestens 2 mal Zahl
+   [wxMaxima: subsubsect end   ] */
+
+/* [wxMaxima: comment start ]
+Genau 3 oder genau 2 (g7 = g5 + g8)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+P(A) = 4 / 8; P(A) = 4 / 8, numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsubsect start ]
+Genau 3 mal Zahl
+   [wxMaxima: subsubsect end   ] */
+
+/* [wxMaxima: comment start ]
+Alle außer genau 3 (g8 = 1)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+P(A) = 1 / 8; P(A) = 1 / 8, numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: fold    end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Nicht-Maturable Schüler
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: comment start ]
+Jeder Schüler mit jedem möglich außer sich selbst, jedoch keine doppelten:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+(19 * (19 - 1)) / 2;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Jeder nicht-maturable mit jedem günstig außer sich selbst, jedoch keine doppelten:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+(4 * (4-1)) / 2;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+P(A)  = 6 / 171; P(A)  = 6 / 171, numer;
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

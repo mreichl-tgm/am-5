@@ -1,0 +1,171 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 17.10.1 ] */
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Markus Reichl, 5AHITM, 14.10.2017
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: title   start ]
+Statistik
+   [wxMaxima: title   end   ] */
+
+
+/* [wxMaxima: section start ]
+Beschreibende Statistik
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Arithmetisches Mittel
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: comment start ]
+Der Durchschnitt ist in der Statistik das arithmetische Mittel. 
+Errechnet wir dieser indem man alle Werte addiert, deren Mittelwert sucht und sie durch ihre Anzahl teilt.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+x = 1/n*sum(x_i, i , 1, n);
+/* [wxMaxima: input   end   ] */
+/* [wxMaxima: answer  start ] */
+p;
+/* [wxMaxima: answer  end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Standardabweichung
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: comment start ]
+Die empirische Standardabweichung ist ein Maß dafür, wie weit sich eine Stichprobe im Schnitt um das arithmetische Mittel streut.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Varianz
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: comment start ]
+Maß für die Größe der Abweichung vom Mittelwert.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Median
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: comment start ]
+Der Median ist ein Mittelwert in der Statistik und ein Lageparameter. Der Median einer Liste von Zahlenwerten ist der Wert, der an der mittleren Stelle steht, wenn man die Werte der Größe nach sortiert.
+Bei einer ungeraden Anzahl an gliedern bildet sich dieser aus dem Mittelwert der zentralen Werte.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+mylist: makelist (random(5), 5);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+median(mylist);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+Beispiele
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: input   start ] */
+load(descriptive);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Dokumentation findet sich unter: http://maxima.sourceforge.net/docs/manual/de/maxima_39.html
+(Ausnahmsweise ganz hilfreich)
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Lists
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: subsubsect start ]
+Create
+   [wxMaxima: subsubsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+mylist: makelist (random(20), 20);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsubsect start ]
+Sort
+   [wxMaxima: subsubsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+mylist_sorted: sort(mylist);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Boxplot
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxboxplot(mylist, box_orientation=horizontal);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Piechart
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxpiechart(mylist);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Histogramm
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxhistogram(mylist);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+Glossar
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Spannweite
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: comment start ]
+Maximalwert - Minimalwert
+   [wxMaxima: comment end   ] */
+
+
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
