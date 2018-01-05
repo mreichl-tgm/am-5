@@ -1,0 +1,193 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 17.10.1 ] */
+/* [wxMaxima: input   start ] */
+kill(all);
+load(distrib);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: title   start ]
+H16
+   [wxMaxima: title   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Markus Reichl, 5AHITM, 2018-01-05
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: section start ]
+8.165
+   [wxMaxima: section end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: input   start ] */
+kill(m,s,x1,x2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+
+   [wxMaxima: subsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: comment start ]
+12cm = 120mm
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+m: 120;
+s: 0.1;
+x1: m - 0.3;
+x2: m + 0.3;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+1 - (cdf_normal(x2,m,s) - cdf_normal(x1,m,s)), numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Zu 0.2% liegt der Wert außerhalb des Toleranzbereichs von +- 0.3mm.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: fold    end   ] */
+
+/* [wxMaxima: subsect start ]
+
+   [wxMaxima: subsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: comment start ]
+11.98cm = 119.8mm
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(s);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+P: 0.001;
+x: 119.8;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(P = cdf_normal(x,m,s), s)[1], numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Sigma müsste einen Wert von rund 0.065mm annehmen.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: fold    end   ] */
+
+
+/* [wxMaxima: fold    end   ] */
+
+
+/* [wxMaxima: section start ]
+8.168
+   [wxMaxima: section end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: input   start ] */
+kill(m,s,x,x1,x2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+
+   [wxMaxima: subsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: input   start ] */
+m: 3;
+s: 0.3;
+x1: m-1;
+x2: m+1;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+1 - (cdf_normal(x2,m,s) - cdf_normal(x1,m,s)), numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Zu rund 0.00086% liegt die Ausgabezeit außerhalb des Toleranzbereichs.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: fold    end   ] */
+
+/* [wxMaxima: subsect start ]
+
+   [wxMaxima: subsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: input   start ] */
+kill(s);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+P: 0.005;
+x: 3.5;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(P = cdf_normal(x,m,s), s)[1], numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Sigma müsste einen Wert von rund -0.194 annehmen, damit zu 0.5% die Ausgabe der Tickets länger als 3.5s dauert.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: fold    end   ] */
+
+
+/* [wxMaxima: fold    end   ] */
+
+
+/* [wxMaxima: section start ]
+8.186
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: subsect start ]
+
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(s, sd);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+s: 4;
+n: 12;
+sd: 3.8;
+f: n - 1;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+x: f*sd²/s²;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+cdf_normal(x,m,s), numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Zu etwa 95.8% ist die Abweichung kleiner als 3.8g.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: section start ]
+8.213
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: section start ]
+8.217
+   [wxMaxima: section end   ] */
+
+
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

@@ -1,13 +1,121 @@
 \documentclass{school}
 
-\subject{Angewandte Mathematik}
 \title{Stochastik}
-
+\subject{Angewandte Mathematik}
 \author{Markus Reichl}
 
 \begin{document}
-
 \maketitle
+\thispagestyle{fancy}	% Makes the first page fancy too
+
 \tableofcontents
 
+\newpage
+\section{Grundlagen}
+Der Zufall unterliegt Regeln, die erst bei einer großen Anzahl von Versuchen sichtbar werden.\\
+Ein Zufallsexperiment muss $n$-Mal durchgeführt werden um zu erkennen, dass das Ereignis $A$ $k$-Mal auftritt.
+
+Nach einer ausreichenden Zahl von Versuchen kann man als Schätzwert für die Wahrscheinlichkeit $P(A)$, die Anzahl der Ereignisse $k$ relativ zur Anzahl der Versuche $n$ nehmen.
+$$P(A) = \frac{k}{n}$$
+{\footnotesize $$0 \leqslant P(A) \leqslant 1$$}
+\begin{vardefs}
+\addvardef{$P(A)$}{Wahrscheinlichkeit}
+\addvardef{$A$}{Ereignis}
+\addvardef{$k$}{Anzahl der Ereignisse}
+\addvardef{$n$}{Anzahl der Versuche}
+\end{vardefs}
+
+\section{Laplace Experiment}
+Gilt für ein Zufallsexperiment, dass
+\begin{outline}
+\1 endlich viele Ereignisse existieren und
+\1 jedes Ereignis gleich wahrscheinlich ist,
+\end{outline}
+kann man ein Laplace Experiment durchführen. Man unterscheidet dabei die Zahl der günstigen $g$ und der möglichen $m$ Fälle für ein Ereignis $A$. Die Wahrscheinlichkeit $P(A)$ für ein Ereignis $A$ ist als Quotient der günstigen $g$ und der möglichen $m$ Fälle definiert.
+$$P(A) = \frac{g}{m}$$
+
+\section{Zusammengesetzte Ereignisse}
+2 Ereignisse $A, B$ sollen zu einem Ereignis $C$ zusammengesetzt werden.
+\begin{center}
+\begin{tabularx}{0.5\textwidth}{c c c}
+	$A$ UND $B$ & bzw. & $A$ ODER $B$\\
+	{\small ($A$ und $B$ zugleich)} & & {\small (mindestens $A$ oder $B$)}
+\end{tabularx}
+\end{center}
+
+\paragraph{Gegenwahrscheinlichkeit} $P(\bar{A}) = 1 - P(A)$ \quad $\bar{A}$ \quad \dots \quad "Non-A"
+
+\paragraph{Unvereinbar} 2 Ereignisse sind unvereinbar wenn sie nicht gemeinsam Auftreten können ($P(A_{\text{UND}}B) = 0$).
+
+\paragraph{Additionssatz \small{(ODER-Regel)}}
+$$P(A_{\text{ODER}}B) = P(A) + P(B) - P(A_{\text{UND}}B) \quad \text{wenn A und B beliebig}$$
+$$P(A_{\text{ODER}}B) = P(A) + P(B) \quad \text{wenn A und B unvereinbar}$$
+
+\paragraph{Multiplikationssatz \small{(UND-Regel)}}
+$$P(A_{\text{UND}}B) = P(A) * P(B_{\text{ODER}}A) \quad \text{wenn A und B beliebig}$$
+$$P(A_{\text{UND}}B) = P(A) * P(B) \quad \text{wenn A und B unvereinbar}$$
+
+\section{Bernoulli Versuch \normalsize{(Pfade)}}
+\paragraph{1. Pfadregel \small{UND-Regel}} Die Wahrscheinlichkeit eines Ereignisses ist gleich dem Produkt der Wahrscheinlichkeiten entlang seines Pfades.
+\paragraph{2. Pfadregel \small{ODER-Regel}} Die Wahrscheinlichkeit eines Ereignisses ist gleich der Summe der Wahrscheinlichkeiten seiner Pfade.
+
+\section{Abzähltechniken}
+\subsection{Permutation}
+Es seien 4 Personen gegeben und es wird die Anzahl verschiedener Reihenfolgen gesucht. Jede Person kann nur an einer Position stehen, es handelt sich also um ein \textit{ziehen ohne zurücklegen}.
+\\\\
+Nach jeder Auswahl einer Position stehen eine Person und ein Platz weniger zur Verfügung.
+
+{\small \begin{tabular}{l l l l l}
+1. & 2. & 3. & 4. & Position\\
+4 & 3 & 2 & 1 & Möglichkeiten
+\end{tabular}}
+\\\\
+Es bestehen also $4 * 3 * 2 * 1$ Möglichkeiten (Permutationen) oder $4$ Fakultät ($4!$).\\
+Die Anzahl der Permutationen von $n$ Elementen entspricht also $n! = \sum_{i=0}^{n - 1} n-i$.
+
+\subsection{Kombination}
+Aus $n=7$ Personen sollen $k=3$ Personen ausgewählt werden. Die Reihenfolge ist dabei belanglos, es handelt sich also um ein \textit{ziehen mit zurücklegen}.
+
+{\small \begin{tabular}{l l}
+$7 * 6 * 5$ & sind wählbar\\
+$3 * 2 * 1$ & sind gleich für jede Auswahl
+\end{tabular}}
+\\\\
+Es bestehen also $\frac{7 * 6 * 5}{3 * 2 * 1} = \frac{210}{6} = 35$ Möglichkeiten.
+Allgemein ist die Kombination als $\frac{n * (n-1) \text{\dots} (n - k + 1)}{1 \text{\dots} k}$ definiert, was dem Binomialkoeffizienten entspricht.
+
+\paragraph{Binomialkoeffizient}
+$$\binom{n}{k} = \frac{n!}{(n-k)! * k!}$$
+In wxMaxima kann der Binomialkoeffizient mittels \verb|binomial(n, k)| berechnet werden.
+
+\subsection{Variation \normalsize{(Geordnete Auswahl)}}
+Aus $n=7$ Personen sollen $k=3$ ausgewählt werden. Die Reihenfolge der Kombination ist dabei zu beachten, es handelt sich also um ein \textit{ziehen ohne zurücklegen}.
+
+{\small \begin{tabular}{l l l l}
+1. & 2. & 3. & Position\\
+$7$ & $6$ & $5$ & $\rightarrow 7 * 6 * 5$ Möglichkeiten
+\end{tabular}}
+\\\\
+Die Variation kann auch anhand der Kombination berechnet werden.
+$$\binom{7}{3} * 3! = 7 * 6 * 5 = 210 \text{~Variationen}$$
+
+\newpage
+\section{Verteilung}
+\subsection{Hypergeometrische Verteilung}
+
+
+% Basic Figure
+% \begin{figure}[h]
+%	 \centering
+% 	 \includegraphics[height=4cm]{image.jpg}
+% 	 \caption{Caption}
+% \end{figure}
+
+% Basic bibiography
+% \begin{thebibliography}{9}
+% \bibitem{faz} faz.net, Vergewaltigung live auf Facebook gezeigt \\ http://www.faz.net/aktuell/gesellschaft/kriminalitaet/vergewaltigung-live-auf-facebook-gezeigt-14936872.html
+% \end{thebibliography}
+
+% List of figures
+% \listoffigures
 \end{document}
