@@ -1,0 +1,69 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 17.10.1 ] */
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+load(distrib);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+9.17
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: input   start ] */
+a: 0.05;
+n: 16;
+x: 120;
+s: 7.4;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+x + 1 - a/2 * s / sqrt(n);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+9.18
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(n,x,s);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+a: 0.08;
+vals: [203, 201, 199, 195, 193, 195, 202, 207, 208];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+x: mean(vals), numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+s: std(vals), numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+9.13
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
