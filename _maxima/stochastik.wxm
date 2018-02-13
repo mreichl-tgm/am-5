@@ -1,0 +1,489 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 17.10.1 ] */
+/* [wxMaxima: section start ]
+Batterie
+   [wxMaxima: section end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: comment start ]
+http://www.michael-leitgeb.at/srdp/teila/384/Batterien.pdf
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(all);  load(distrib);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Binomial
+   [wxMaxima: subsect end   ] */
+
+/* [wxMaxima: input   start ] */
+x: 2;   p: 0.02;    n: 40;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cdf_binomial(x,n,p);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Normal
+   [wxMaxima: subsect end   ] */
+
+/* [wxMaxima: input   start ] */
+m: 5320;    s:156;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(cdf_normal(m+s,m,a) - cdf_normal(m-s,m,a) = 0.9, a), numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+z1: -a/s;    z2: a/s;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a: 156 * 1.65;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+m-a;    m+a;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: fold    end   ] */
+
+
+/* [wxMaxima: section start ]
+Belastung von Bauteilen
+   [wxMaxima: section end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: comment start ]
+http://www.michael-leitgeb.at/srdp/teilb1/489/Belastung_von_Bauteilen.pdf
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(all);  load(distrib);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Statistik
+   [wxMaxima: subsect end   ] */
+
+/* [wxMaxima: input   start ] */
+v: [118.5,122,120.5,117,118.5,121,121.5,119.5];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+n: length(v);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+_x: mean(v);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+_s: std1(v);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f:n-1;  a: 0.05; _z: 1-a/2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+z: 1.96;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+t: quantile_student_t(_z,f);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+m_u: _x-t*_s/sqrt(n), numer;
+m_o: _x+t*_s/sqrt(n), numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Normal
+   [wxMaxima: subsect end   ] */
+
+/* [wxMaxima: input   start ] */
+m:102;  s: 3.5;    P:0.15;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(P = 1-cdf_normal(m+e,m,s),e), numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: fold    end   ] */
+
+
+/* [wxMaxima: section start ]
+Blockflöte
+   [wxMaxima: section end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: comment start ]
+http://www.michael-leitgeb.at/srdp/teilb1/184/Blockfloete.pdf
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(all);  load(distrib);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Normal
+   [wxMaxima: subsect end   ] */
+
+/* [wxMaxima: input   start ] */
+m: 47;  s: 0.075; x: 46.9;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cdf_normal(x,m,s), numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: fold    end   ] */
+
+
+/* [wxMaxima: section start ]
+Dachfenster
+   [wxMaxima: section end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: comment start ]
+http://www.michael-leitgeb.at/srdp/teilb1/157/Dachfenster_1.pdf
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(all);  load(distrib);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Statistik
+   [wxMaxima: subsect end   ] */
+
+/* [wxMaxima: hide output   ] */
+/* [wxMaxima: input   start ] */
+v: [(1.95+1.91)/2, (2.3+2.26)/2];
+v: append(v,makelist((2+1.96)/2,i,1,5));
+v: append(v,makelist((2.05+2.01)/2,i,1,22));
+v: append(v,makelist((2.1+2.06)/2,i,1,48));
+v: append(v,makelist((2.15+2.11)/2,i,1,52));
+v: append(v,makelist((2.2+2.16)/2,i,1,29));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: hide output   ] */
+/* [wxMaxima: input   start ] */
+_x: mean(v);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+_x: apply("+", v) / length(v);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+_s: sqrt(var(v));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Normal
+   [wxMaxima: subsect end   ] */
+
+/* [wxMaxima: input   start ] */
+P1: 0.932;  P2: 0.082;
+m: _x; s: _s;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: hide output   ] */
+/* [wxMaxima: input   start ] */
+x2: solve(cdf_normal(x,m,s) = P2, x), numer;
+x1: solve(cdf_normal(x,m,s) = P1, x), numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x2;
+x1;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: fold    end   ] */
+
+
+/* [wxMaxima: section start ]
+Drehteile
+   [wxMaxima: section end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: comment start ]
+http://www.michael-leitgeb.at/srdp/teila/49/Drehteile_1.pdf
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(all);  load(distrib);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+m: 60;  s: 0.3;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Bereich
+   [wxMaxima: subsect end   ] */
+
+/* [wxMaxima: input   start ] */
+x1: 60.1-0.6;   x2: 60.1+0.6;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cdf_normal(x2,m,s)-cdf_normal(x1,m,s), numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Symmetrischer Bereich
+   [wxMaxima: subsect end   ] */
+
+/* [wxMaxima: input   start ] */
+a: 1.65*s;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+m-a;m+a;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: fold    end   ] */
+
+
+/* [wxMaxima: section start ]
+Düngersäcke
+   [wxMaxima: section end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: comment start ]
+http://www.michael-leitgeb.at/srdp/teilb1/119/Duengersaecke_2.pdf
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(all);  load(distrib);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+_m: 25;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Normal
+   [wxMaxima: subsect end   ] */
+
+/* [wxMaxima: input   start ] */
+m: 24.8;    s: 0.2;     x: _m;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cdf_normal(x,m,s), numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Grafik
+   [wxMaxima: subsect end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(m,s,x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+s: 0.2; x: 25; a: 0.1;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+z_a: (x - m)/s;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+m: solve(-1.28 = z_a, m), numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Rückrechnung
+   [wxMaxima: subsect end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(m, s, x, P);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+P1: 0.2;    P2: 0.9;
+x1: 24;     x2: 26;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+i_z1 = 1 - P1;
+i_z2 = P2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+z1: -0.84;
+z2: 1.28;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+I: z1 = (x1 - m)/s;
+II: z2 = (x2 - m)/s;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+linsolve([I,II],[m,s]), numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: fold    end   ] */
+
+
+/* [wxMaxima: section start ]
+CO2 Gehalt der Luft
+   [wxMaxima: section end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: comment start ]
+http://www.michael-leitgeb.at/srdp/teilb1/519/CO2Gehalt_d_Luft.pdf
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(all); load(distrib);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+v: [2500,2780,3500,4000,2800,2740,3850];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+_m: apply("+", v) / length(v), numer;
+_s: sqrt(var1(v)), numer;
+n: length(v);
+f: n-1;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a: 1-0.95; i_z: 1-a/2;
+t: quantile_student_t(i_z,f);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+_m-t*_s/sqrt(n), numer;
+_m+t*_s/sqrt(n), numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: fold    end   ] */
+
+
+/* [wxMaxima: section start ]
+Packungen
+   [wxMaxima: section end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: comment start ]
+http://www.michael-leitgeb.at/srdp/teilb1/393/KP1_16_C1_08.pdf
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(all);  load(distrib);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+m: 1000;    s: 10;  n: 15;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Parameter
+   [wxMaxima: subsect end   ] */
+
+/* [wxMaxima: input   start ] */
+__m: m;     __s: s/sqrt(n);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+ZSB
+   [wxMaxima: subsect end   ] */
+
+/* [wxMaxima: input   start ] */
+z: 1.95;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+m_o: __m - z * __s, numer;
+m_o: __m + z * __s, numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: fold    end   ] */
+
+
+/* [wxMaxima: section start ]
+Länge eines Werkstücks
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: comment start ]
+http://www.michael-leitgeb.at/srdp/teilb1/362/Laenge_e_Werkstuecks.pdf
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all);  load(distrib);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+m: 72.3;    s: 0.5;     n: 7;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+z: 1.95;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+__m: m;     __s: s/sqrt(n);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+m_o: __m - z * __s, numer;
+m_o: __m + z * __s, numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+LED-Lampen
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: comment start ]
+http://www.michael-leitgeb.at/srdp/teilb1/426/LED_Lampen_5.pdf
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all);  load(distrib);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+s: 75;  n: 8;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+v: [1053,900,984,873,838,1045,960,955];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+apply("+", v);
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

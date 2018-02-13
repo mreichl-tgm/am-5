@@ -1,0 +1,255 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 17.10.1 ] */
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+load(lsquares);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+load(stats);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: title   start ]
+S25: Beurteilende Statistik
+   [wxMaxima: title   end   ] */
+
+
+/* [wxMaxima: section start ]
+9.60 Schiffsmotor
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: input   start ] */
+D: matrix([2400, 18.4], [2800, 24.8], [3100, 30.6], [3800, 38.5], [4200, 42.4]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Gerade
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+lin: y = k*x+d;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+lin_kd: lsquares_estimates(D,[y, x],lin,[k, d])[1];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+lin_k: lin_kd[1];   lin_d: lin_kd[2];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+g: subst([lin_k, lin_d], lin);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+linear_regression(D);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+simple_linear_regression(D);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Leistung 1200
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+subst(1200, x, g), numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Extrapolation
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: comment start ]
+Weil die Gleichung, die zur Bestimmung des Wertes genutzt wurde, auf einer endlichen Menge an Stichproben basiert.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Darstellung
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: section start ]
+9.62 Designer-Kugelschreiber
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(d);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+D: matrix([100, 3500], [250, 7200], [320, 8100], [400, 9000]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Linear
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+lin: y = k * x + d;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+lin_kd: lsquares_estimates(D,[x, y],lin,[k, d])[1];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+lin_k: lin_kd[1]; lin_d: lin_kd[2];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+lin_g: subst([lin_k, lin_d], lin);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+simple_linear_regression(D);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxplot2d([[discrete, args(D)], rhs(lin_g)], [x, 0, 500],
+    [style, points, lines]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Quadratisch
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+quad: y = k * x^2 + d;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+quad_kd: lsquares_estimates(D,[x, y],quad,[k, d])[1];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+quad_k: quad_kd[1];     quad_d: quad_kd[2];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+quad_g: subst([quad_k, quad_d], quad);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Kubisch
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+cube: y = k * x^3 + d;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+cube_kd: lsquares_estimates(D,[x, y],cube,[k, d])[1];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+cube_k: cube_kd[1];     cube_d: cube_kd[2];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+cube_g: subst([cube_k, cube_d], cube);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Beste Beschreibung
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxplot2d([
+        [discrete, args(D)], 
+        rhs(lin_g), rhs(quad_g), rhs(cube_g)
+    ],
+    [x, 0, 500], 
+    [style, points, lines, lines, lines],
+    [legend, "Daten", "Linear", "Quadratisch", "Kubisch"],
+    [title, "Designer-Kugelschreiber"],
+    [xlabel, "Stück verkauft"],
+    [ylabel, "Kosten in Euro"]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Das lineare Modell eignet sich durchaus, da es den Zusammenhang am besten beschreibt. Der Umsatz steigt eher selten erkennbar nach der Menge.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: section start ]
+9.72 Schuhgrößen
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(D);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+D: matrix([42, 180], [41, 175], [44, 182], [45, 188], [43, 181], [41, 177], [193, 47], [184, 43], [188, 45], [181, 42]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Darstellung als Punktewolke
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxplot2d([discrete, args(D)],[x, 40, 50], [style, points]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Regressionsgerade
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+simple_linear_regression(D);
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
