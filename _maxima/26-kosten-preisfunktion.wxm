@@ -1,5 +1,10 @@
 /* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
 /* [ Created with wxMaxima version 17.10.1 ] */
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+
 /* [wxMaxima: comment start ]
 Markus Reichl   2018-02-27
    [wxMaxima: comment end   ] */
@@ -68,6 +73,10 @@ wxplot2d(subst([F=100, K=10], rhs(k_L)), [x, 0, 10], [xlabel, "Mengeneinheiten"]
 
 /* [wxMaxima: fold    end   ] */
 
+
+/* [wxMaxima: fold    end   ] */
+
+
 /* [wxMaxima: subsect start ]
 Degressive Kosten (Konvex)
    [wxMaxima: subsect end   ] */
@@ -88,6 +97,7 @@ wxplot2d(subst([F=100, K=10, a=20], rhs(k_D)), [x, 0, 10], [xlabel, "Mengeneinhe
 
 
 /* [wxMaxima: fold    end   ] */
+
 
 /* [wxMaxima: subsect start ]
 Progressive Kosten
@@ -110,6 +120,7 @@ wxplot2d(subst([F=100, K=10, a=5], rhs(k_D)), [x, 0, 10], [xlabel, "Mengeneinhei
 
 /* [wxMaxima: fold    end   ] */
 
+
 /* [wxMaxima: subsect start ]
 Logistische Kosten
    [wxMaxima: subsect end   ] */
@@ -121,47 +132,50 @@ Der Wendepunkt einer logistischen Kostenfunktion wird als Kostenkehre bezeichnet
 
 /* [wxMaxima: fold    end   ] */
 
+
 /* [wxMaxima: subsect start ]
 Durchschnittskostenfunktion
    [wxMaxima: subsect end   ] */
-/* [wxMaxima: fold    start ] */
+
+
 /* [wxMaxima: input   start ] */
-K_D(x) = K(x) / x;
+KDx = Kx / x;
 /* [wxMaxima: input   end   ] */
+
 
 /* [wxMaxima: comment start ]
 Bsp.: Bei welcher Produktionsmenge x sind die durchschnittlichen Stückkosten am kleinsten, wenn die Kostenfunktion K(x) durch 0.05x² + 20x + 312500 bescrhieben wird?
    [wxMaxima: comment end   ] */
 
+
 /* [wxMaxima: comment start ]
 Minimum einer Funktion wird durch die Ableitung angegeben: K_D'(x) = 0
    [wxMaxima: comment end   ] */
+
 
 /* [wxMaxima: input   start ] */
 K_D_x: 0.05*x + 20 + (312500)/x;
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: input   start ] */
 solve(diff(K_D_x) = 0);
 /* [wxMaxima: input   end   ] */
+
 
 /* [wxMaxima: comment start ]
 Nur zweiter Wert sinnvoll da keine negativen Stückzahlen produziert werden können.
    [wxMaxima: comment end   ] */
 
+
 /* [wxMaxima: input   start ] */
 wxplot2d(K_D_x, [x, 1500, 3500], [y, 250, 350], [xlabel, "Mengeneinheiten"], [ylabel, "Preiseinheiten"]);
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: comment start ]
 Bei einer Produktionsmenge von x = 2500 ME sind die Stückkosten am kleinsten: K_D(2500) = 270 GE/ME.
    [wxMaxima: comment end   ] */
-
-
-/* [wxMaxima: fold    end   ] */
-
-
-/* [wxMaxima: fold    end   ] */
 
 
 /* [wxMaxima: section start ]
@@ -201,9 +215,140 @@ G(x) = P*x-K*x-F;
 
 
 /* [wxMaxima: comment start ]
-Breakeven (Gewinnschwelle, Untere Gewinngrenze) => Gewinn wird positiv
-Obere Gewinngrenze => Gewinn wird negativ
-Betriebsmaximum => Gewinn ist am höchsten
+Auf der Gewinnfunktion können einige Punkte gefunden werden. Zum Beispiel:
+    - Breakeven (Gewinnschwelle, Untere Gewinngrenze) => Gewinn wird positiv
+    - Obere Gewinngrenze => Gewinn wird negativ
+    - Betriebsmaximum => Gewinn ist am höchsten
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: section start ]
+H27 - Bsp.: 9.47 a)
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+Kx: 0.01*x^3 - 0.75*x^2+50*x+300;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+KDx: Kx / x;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+solve(diff(KDx) = 0)[3], numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Das Durchschnittskostenminimum liegt bei 44.93 Preiseinheiten pro Mengeneinheit.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: section start ]
+H27 - Bsp.: 9.58 b)
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+Kx: 0.15*x^2 + 25*x + 54000;    p: 250;
+Ex: p * x;
+Gx: Ex - Kx;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxplot2d([Kx, Ex, Gx],[x, 0, 1400], 
+    [legend, "Kostenfunktion", "Erlösfunktion", "Gewinnfunktion"], 
+    [ylabel, "Mengeneinheiten"], 
+    [xlabel, "Geldeinheiten"]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Kostendeckender Preis
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+Gx0: solve(Gx = 0); 
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Der niedrigere Wert stellt das Gewinnminimum, bzw. den Break-Even dar.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+Gy0_2: subst(Gx0[2], Kx);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Der minimale Erlös, für einen positiven Gewinn, liegt bei 75 000 Geldeinheiten und kommt bei 300 Mengeneinheiten zustande.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Gewinnbereich
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: comment start ]
+Bei der zweiten Nullstelle der Gewinnfunktion, welche höher ist, endet der Gewinn, womit der Bereich abgegrenzt wird.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+Gy0_1: subst(Gx0[1], Kx);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+subst(Gx0[1], Ex);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Der maximale Erlös liegt bei 300 000 Geldeinheiten und kommt bei 1200 Mengeneinheiten zustande.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Maximaler Gewinn
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: comment start ]
+Der maximale Gewinn entspricht dem höchsten y-Wert der Gewinnfunktion.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+Gx_x0: solve(diff(Gx) = 0, x)[1];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+subst(Gx_x0, Gx);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Der Maximale Gewinn wird bei einer Produktion von 750 Mengeneinheiten erwartet und beträgt 30 375 Geldeinheiten.
    [wxMaxima: comment end   ] */
 
 
