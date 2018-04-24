@@ -1,5 +1,5 @@
 /* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
-/* [ Created with wxMaxima version 17.10.1 ] */
+/* [ Created with wxMaxima version 18.02.0 ] */
 /* [wxMaxima: input   start ] */
 kill(all);
 /* [wxMaxima: input   end   ] */
@@ -49,88 +49,85 @@ wxplot2d(K_x, [x, 0, 800], [xlabel, "Mengeneinheiten"], [ylabel, "Preiseinheiten
 /* [wxMaxima: section start ]
 Kostenfunktionen
    [wxMaxima: section end   ] */
-/* [wxMaxima: fold    start ] */
+
+
 /* [wxMaxima: input   start ] */
 kill(all);
 /* [wxMaxima: input   end   ] */
+
 
 /* [wxMaxima: comment start ]
 Die Grenzfunktion K'(x), bezeichnet den Kostenzuwachs für eine zusätzlich produzierte ME.
    [wxMaxima: comment end   ] */
 
+
 /* [wxMaxima: subsect start ]
 Lineare Kosten
    [wxMaxima: subsect end   ] */
-/* [wxMaxima: fold    start ] */
+
+
 /* [wxMaxima: input   start ] */
 k_L: K(x) = K*x+F;
 /* [wxMaxima: input   end   ] */
+
 
 /* [wxMaxima: input   start ] */
 wxplot2d(subst([F=100, K=10], rhs(k_L)), [x, 0, 10], [xlabel, "Mengeneinheiten"], [ylabel, "Preiseinheiten"]);
 /* [wxMaxima: input   end   ] */
 
 
-/* [wxMaxima: fold    end   ] */
-
-
-/* [wxMaxima: fold    end   ] */
-
-
 /* [wxMaxima: subsect start ]
 Degressive Kosten (Konvex)
    [wxMaxima: subsect end   ] */
-/* [wxMaxima: fold    start ] */
+
+
 /* [wxMaxima: comment start ]
 Konvex und nach Mengeneinheiten beschränkt.
 K'(x)   > 0
 K''(x)  < 0
    [wxMaxima: comment end   ] */
 
+
 /* [wxMaxima: input   start ] */
 k_D: K(x) = x^(K/a) + F;
 /* [wxMaxima: input   end   ] */
+
 
 /* [wxMaxima: input   start ] */
 wxplot2d(subst([F=100, K=10, a=20], rhs(k_D)), [x, 0, 10], [xlabel, "Mengeneinheiten"], [ylabel, "Preiseinheiten"]);
 /* [wxMaxima: input   end   ] */
 
 
-/* [wxMaxima: fold    end   ] */
-
-
 /* [wxMaxima: subsect start ]
 Progressive Kosten
    [wxMaxima: subsect end   ] */
-/* [wxMaxima: fold    start ] */
+
+
 /* [wxMaxima: comment start ]
 Konkav und nach Geleinheiten beschränkt.
 K'(x)   > 0
 K''(x)  > 0
    [wxMaxima: comment end   ] */
 
+
 /* [wxMaxima: input   start ] */
 k_P: K(x) = K*x^a + F;
 /* [wxMaxima: input   end   ] */
+
 
 /* [wxMaxima: input   start ] */
 wxplot2d(subst([F=100, K=10, a=5], rhs(k_D)), [x, 0, 10], [xlabel, "Mengeneinheiten"], [ylabel, "Preiseinheiten"]);
 /* [wxMaxima: input   end   ] */
 
 
-/* [wxMaxima: fold    end   ] */
-
-
 /* [wxMaxima: subsect start ]
 Logistische Kosten
    [wxMaxima: subsect end   ] */
-/* [wxMaxima: fold    start ] */
+
+
 /* [wxMaxima: comment start ]
 Der Wendepunkt einer logistischen Kostenfunktion wird als Kostenkehre bezeichnet.
    [wxMaxima: comment end   ] */
-
-
-/* [wxMaxima: fold    end   ] */
 
 
 /* [wxMaxima: subsect start ]
@@ -353,5 +350,5 @@ Der Maximale Gewinn wird bei einer Produktion von 750 Mengeneinheiten erwartet u
 
 
 
-/* Maxima can't load/batch files which end with a comment! */
-"Created with wxMaxima"$
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 18.02.0"$

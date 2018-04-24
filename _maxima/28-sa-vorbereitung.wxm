@@ -1,0 +1,181 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 18.02.0 ] */
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: title   start ]
+28 Vorbereitung SA
+   [wxMaxima: title   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Markus Reichl     5AHITM     2018-03-13
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: section start ]
+Bsp.: Fluggesellschaft
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: input   start ] */
+N_x: 600;
+N_m: 12000;
+A_x: 40;            B_x: 56;
+A_m: 1000;      B_m: 800;
+A_p: 40000;     B_p: 50000;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+e1: A_x * x + B_x * y >= N_x;
+e2: A_m * x + B_m * y >= N_m;
+e3: x >= 0;
+e4: y >= 0;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+Bsp.: Monopolbetrieb
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+In einem Monopolbetrieb ist bei einer Absatzmenge von 16 000 Mengeneinheiten (ME), die Elastizität 1.125. Der Höchstpreis beträgt 170 Geldeinheiten (GE) pro ME. Die Cournot'sche Menge ist 4500 ME.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: comment start ]
+Bei einer Produktionsmenge von 10 000 ME betragen die Grenzkosten 180 GE pro ME. 
+Bei einer Produktionsmenge von 5 000 ME betragen die Gesamtkosten 605 000 GE.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: comment start ]
+Grundgleichungen:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+Kx: a*x^2+b*x+c;
+px: d*x+e;
+Ex: px * x;
+Gx: Ex - Kx;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+5 Unbekannte => 5 unabhängige Gleichungen
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+x1: 16000;
+η1: 1.125;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+px1: subst(x1, x, px);
+g1: η1 = -px1/x1 / diff(px1);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Der Prohibitivpreis (Höchstpreis) beträgt 170. Da er die Position der Preisfunktion auf der y-Achse darstellt, kann er in dieser dem Wert e zugeordnet werden.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+g2: e = 170;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Die Cournot'sche Menge liegt bei 4500 ME, also x = 4500 und beschreibt den maximalen Gewinn, dieser kann durch die Nullstelle der Gewinnfunktion bestimmt werden.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+x3: 4500;
+g3: diff(subst(x3, x, Gx)) = 0;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Die Grenzkosten werden durch die erste Ableitung der Kostenfunktion bestimmt.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+x4: 10000;
+g4: diff(subst(x4, x, Kx)) = 180;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Die Gesamtkosten ergeben sich aus der Kostenfunktion
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+x5: 5000;
+g5: subst(x5, x, Kx) = 605000;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+linsolve([g1, g2, g3, g4, g5], [a, b, c, d, e]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+Newton
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+load(newton1);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+Gx: -0.0007*x^3 + 0.63*x^2 + 840 * x - 289000;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+plot2d(Gx ,[x, 0, 400000]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+Gx_nx: newton(Gx, x, 0, 0.1);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+subst(Gx_nx, x, Gx);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(me), please;
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 18.02.0"$

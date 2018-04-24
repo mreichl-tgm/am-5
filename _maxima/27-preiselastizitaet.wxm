@@ -1,0 +1,291 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 18.02.0 ] */
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+Kostenfunktion
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: comment start ]
+Eine Kostenfunktion kann NIE monoton fallend sein.
+Eine Kostenfunktion verhält sich IMMER im 1. Quadranten.
+
+Die Erlösfunktion berechnet den Umsatz.
+Die Kostenkehre entspricht dem Wendepunkt in der 2. Ableitung.
+
+Das BETRIEBSMINIMUM findet man als das Minimum der VARIABLEN STÜCKKOSTEN.
+
+Über dem maximalen Gewinn liegt die Gewinngrenze.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: section start ]
+Preise
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: comment start ]
+Bei einer vollständigen Durchmischung is ein Fixpreis, unabhängig von der Stückzahl.
+Bei vielen anderen Produkte gibt es Monopole, wo der preis von der Stückzahl abhängig ist.
+
+Ein Prohibitivspreis ist der höchste Preis zu dem ein Stück verkauft wird.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: title   start ]
+Preiselastizität der Nachfrage
+   [wxMaxima: title   end   ] */
+
+
+/* [wxMaxima: comment start ]
+„Die Preiselastizität ist das Verhältnis zwischen relativer Nachfrage- und Preisänderung“
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+η = -p(x)/x / 'diff(p(x));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+η = - p(x) / (x * p'(x))
+
+η < 1   Nachfrage unelastisch: Preisänderung bewirkt eine niedrigere Nachfrageänderung.
+η > 1   Nachfrage elastisch: Preisänderung bewirkt eine höhere Nachfrageänderung.
+η = 1   Nachfrage weder elastisch noch unelastisch.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: section start ]
+Cournot'scher Punkt
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: comment start ]
+Ein Punkt gebildet aus der Menge und dem Preis, welcher den Maximalen Gewinn kennzeichnet.
+
+(x | p(x))
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: section start ]
+Bsp.: Monopolbetrieb
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Ein Monopolbetrieb arbeitet mit einer Kostenfunktion
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+Kx: -0.005*x^2 + 84*x + 115200;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+und einer Preisfunktion
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+px: 520 - 0.13*x;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Monopol => Kein Fixpreis!
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+Gx: px - Kx;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxplot2d([Kx, px, Gx],[x, -1500, 20000], 
+    [legend, "Kostenfunktion", "Preisfunktion", "Gewinnfunktion"]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Cournot'scher Punkt
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Maximaler Gewinn
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Maximaler Erlös
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Elastizität im Cournot'schen Punkt
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Prohibitivpresi und Sättigungsmenge
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Break-Evene und Gewinngrenze
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Betriebsoptimum und Minimum
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Frage: Gibt es einen degressiven oder progressiven Kostenbereich?
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: section start ]
+Bsp.: Kurvendiskussion
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Ein Betrieb arbeitet mit einer Kostenfunktion
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+Kx: 0.1*x^3 - 1.8*x^2 + 14*x + 15;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Der Betrieb hat eine Kapazitätsgrenze von 16 ME.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Fixkosten
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Variable Kostenfunktion
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Durchschnittskostenfunktion
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Variable Durchschnittskosten
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Grenzkostenfunktion
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: comment start ]
+Die Grenzkostenfunktion ist die erste Ableitung der Kostenfunktion.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Kostenkehre
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Betriebsoptimum und Betriebsminimum
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Grafisch
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: comment start ]
+Kosten, variable Kosten, Betriebsoptimum, Betriebsminimum
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: comment start ]
+Durchschnittskosten, Stückkosten, variable Kosten, Grenzkosten
++ Schnitt durchschnitts- und Grenzkosten
++ Schnitt variabler und Grenzkosten
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: section start ]
+Bsp.: Umgekehrte Kurvendiskussion
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: comment start ]
+In einem Monopolbetrieb ist bei einer Absatzmenge von 16 000 Mengeneinheiten (ME), die Elastizität 1.125. Der Höchstpreis beträgt 170 Geldeinheiten (GE) pro ME. Die Cournot'sche Menge ist 4500 ME.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: comment start ]
+Bei einer Produktionsmenge von 10 000 ME betragen die Grenzkosten 180 GE pro ME. 
+Bei einer Produktionsmenge von 5 000 ME betragen die Gesamtkosten 605 000 GE.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Quadratische Kostenfunktion und lineare Nachfragefunktion
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Betriebsoptimum und Minimum der Stückkosten
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Maximaler Gewinn
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Grenzen des Gewinnbereichs
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Maximaler Erlös
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Elastizität im Cournot'schen Punkt
+   [wxMaxima: subsect end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 18.02.0"$
